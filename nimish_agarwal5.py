@@ -1,0 +1,5 @@
+str= input()
+str1=list(str.split(','))
+print(str1)
+str1=tuple(str.split(','))
+print(str1)
