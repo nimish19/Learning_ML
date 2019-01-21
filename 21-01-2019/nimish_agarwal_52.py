@@ -30,3 +30,7 @@ regressor_OLS.summary()
 x_features = features[:,[1,2]]
 regressor_OLS = sm.OLS(endog=labels, exog=x_features).fit()
 regressor_OLS.summary()
+
+x_features = features[:,[1]]
+regressor_OLS = sm.OLS(endog=labels, exog=x_features).fit()
+regressor_OLS.summary()
