@@ -9,7 +9,7 @@ features = df.iloc[:,:-1]
 features = pd.get_dummies(features, columns= ['occupation'])
 features = pd.get_dummies(features, columns= ['occupation_husb'])
 features = features
-labels = df.iloc[:,-1]
+labels = pd.DataFrame(df.iloc[:,-1])
 
 from sklearn.model_selection import train_test_split as tts
 f_train,f_test,l_train,l_test = tts(features,labels,test_size=0.25,random_state=0) 
@@ -30,8 +30,7 @@ print('confusion matrix:',cm_pred*100)
 #check your model accuracy using .score function()
 print('score fucn:',lor.score(f_test,l_test)*100)
 #calculate percentage of women who actually had an affair
-affair_perc = (cm/features.shape[0])*100
-print("percentage of women actually had an affair: ",affair_perc[0][0])
+print("percentage of women actually had an affair: ",((labels["affair"][labels['affair']==1].sum())/labels.shape[0])*100)
 
 #predict She's a 25-year-old teacher who graduated college, 
 #has been married for 3 years, has 1 child, rates herself as strongly religious, 
